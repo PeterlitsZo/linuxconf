@@ -1,0 +1,14 @@
+[http "https://github.com"]
+    # proxy = socks5://127.0.0.1:7890
+[https "https://github.com"]
+    # proxy = socks5://127.0.0.1:7890
+[http]
+	postBuffer = 524288000
+[user]
+	name = Peterlits Zo
+	email = peterlitszo@outlook.com
+[core]
+	editor = vim
+	autocrlf = true
+[alias]
+	llg = log --oneline -10 --graph
