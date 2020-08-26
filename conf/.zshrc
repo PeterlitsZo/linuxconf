@@ -97,6 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# The X Server Port
+echo "=== X Server Setting for WSL 2 ========================================="
+export DISPLAY=$WINIP:8500
+echo DISPLAY $DISPLAY
+
 # Set the Proxy
 # get the Windows' IP
 export WINIP=$(cat /etc/resolv.conf | grep 'nameserver' | cut -f 2 -d ' ')
@@ -111,9 +116,4 @@ alias px="proxychains4 -q -f ~/.proxychains.conf"
 
 # Add incr
 source ~/.oh-my-zsh/plugins/incr/incr*.zsh
-
-# The X Server Port
-echo "=== X Server Setting for WSL 2 ========================================="
-export DISPLAY=$WINIP:8500
-echo DISPLAY $DISPLAY
 
