@@ -13,11 +13,6 @@ proxy) and install `oh-my-zsh` by：
 px wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 ```
 
-After setup `oh-my-zsh`, it is a good idea to get plugin `incr`
-
-```shell
-wget http://mimosa-pudica.net/src/incr-0.2.zsh
-```
-
-Then put it to `~/.oh-my-zsh/plugins/incr` folder.
+After setup `oh-my-zsh`, it is a good idea to get plugin `zsh-autosuggestions`,
+so follow the [link](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 
