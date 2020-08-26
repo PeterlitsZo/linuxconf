@@ -9,7 +9,7 @@
 	email = peterlitszo@outlook.com
 [core]
 	editor = vim
-    autocrlf = true
+    autocrlf = input
     whitespace = cr-at-eol
 [alias]
 	llg = log --oneline -10 --graph
