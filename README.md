@@ -36,3 +36,18 @@ To access the web whatever you want, you should:
 4. Use `px`.
 5. If you still do not get the meaning what I say, push a `issue`.
 
+About Git Message
+-------------------------------------------------------------------------------
+
+Write a great git commit msg is always a good idea for you.
+
+Move the `./conf/.gitmessage.txt` to `~` and then run:
+```
+git config --global commit.template ~/.gitmessage.txt
+```
+
+You can also put it to `<your proj>/conf/gitmessage.txt` and run:
+```
+git config commit.template ~/conf/gitmessage.txt
+```
+
