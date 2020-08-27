@@ -120,6 +120,8 @@ alias px="proxychains4 -q -f ~/.proxychains.conf"
 # #############################################################################
 echo "=== X Server Setting for WSL 2 ========================================="
 export DISPLAY=$WINIP:8500
+export GDK_SCALE=0.5
+export GDK_DPI_SCALE=1.3
 echo "   " DISPLAY $DISPLAY
 
 # The Autosuggest Setting
