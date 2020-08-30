@@ -104,17 +104,14 @@ echo
 # #############################################################################
 export WINIP=$(cat /etc/resolv.conf | grep 'nameserver' | cut -f 2 -d ' ')
 echo "=== Proxy Setting for WSL 2 ============================================"
-echo "   " WIN-IP $WINIP
+echo "   " WIN-IP $WINIP:7890
 sed -i '/socks5/d' ~/.proxychains.conf
 sed -i '$a socks5 '${WINIP}' 7890' ~/.proxychains.conf
 
 # use `px` to use the proxy
 echo "    Please use \`px\` to use proxy through Windows' port >_<"
-alias px="proxychains4 -q -f ~/.proxychains.conf"
-
-# Add incr
-# #############################################################################
-# source ~/.oh-my-zsh/plugins/incr/incr*.zsh
+echo "    And remember to \`Allow LAN\` >_<"
+alias px="proxychains4 -f ~/.proxychains.conf"
 
 # The X Server Port
 # #############################################################################
