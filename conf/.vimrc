@@ -1,43 +1,31 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
+" Vim-Plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
-filetype plugin indent on
+call plug#begin()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ultisnips conf
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
 
-"let g:UltiSnipsExpandTrigger = '<tab>'
-"let g:UltiSnipsJumpForwardTrigger = '<tab>'
-"let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" snippet beg "begin{} / end{}" bA
-" \begin{$1}
-"     $0
-" \end{$1}
-" endsnippet
+call plug#end()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ycm conf
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
+" 
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" mdpdf conf
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-inoremap <C-f> <Esc>: exec '.!inkscape-figures create "'.getline('.').'" "./fig/" 2>/dev/null'<CR><CR>:redraw!<CR>
-nnoremap <C-f> : exec '!inkscape-figures edit "./fig/"'<CR><CR>:redraw!<CR>
-set nospell
-
-command Run execute "silent !make run" | execute "redraw!"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
@@ -87,10 +75,10 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set ruler
 
 " Height of the command bar
-set cmdheight=1
+set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Ignore case when searching
 set ignorecase
@@ -132,6 +120,44 @@ set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE guibg=NONE guifg=NONE
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Coc.nvim and Linter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Don't pass the messages to |ins-completion-menu|
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
@@ -158,7 +184,7 @@ hi! link Conceal Special
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 
