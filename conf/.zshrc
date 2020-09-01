@@ -127,5 +127,10 @@ echo "=== Setting Autosuggest ================================================"
 echo "    Use ^z to accept the suggest"
 bindkey '^z' autosuggest-accept
 
+# Use NeoVim instead of vim
+# #############################################################################
+echo "=== Use NeoVim Instead of Vim =========================================="
+alias vim="nvim"
+
 echo
 
