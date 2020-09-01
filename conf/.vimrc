@@ -9,23 +9,9 @@
 
 call plug#begin()
 
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-path'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
-
-
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-" set completeopt=noinsert,menuone,noselect
-" 
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
@@ -156,6 +142,9 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
+" To enable highlight current symbol on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
