@@ -1,10 +1,10 @@
-Peterlits' conf
-===============================================================================
+# Peterlits' conf
+<!-- H1 =================================================================== -->
 
 The all conf file about my linux.
 
-About Zsh
---------------------------------------------------------------------------------
+## About Zsh
+<!-- H2 =================================================================== -->
 
 ### Oh-my-zsh
 
@@ -12,7 +12,8 @@ Before use `zsh` as a script, you should install `proxychains4`(to use Windows'
 proxy) and install `oh-my-zsh` by：
 
 ```shell
-px wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+px wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh \
+    -O - | sh
 ```
 
 ### Zsh-autosuggestions
@@ -36,18 +37,45 @@ To access the web whatever you want, you should:
 4. Use `px`.
 5. If you still do not get the meaning what I say, push a `issue`.
 
-About Git Message
--------------------------------------------------------------------------------
+## About Git Message
+<!-- H2 =================================================================== -->
 
 Write a great git commit msg is always a good idea for you.
 
 Move the `./conf/.gitmessage.txt` to `~` and then run:
-```
+
+```shell
 git config --global commit.template ~/.gitmessage.txt
 ```
 
 You can also put it to `<your proj>/conf/gitmessage.txt` and run:
-```
+
+```shell
 git config commit.template ~/conf/gitmessage.txt
+```
+
+## About NeoVim
+<!-- H2 =================================================================== -->
+
+After install `neovim` and then you need to run:
+
+```shell
+cp .vimrc ~/.config/nvim/init.vim
+```
+
+Use `curl -sL install-node.now.sh/lts | bash` to install node for `coc.nvim`.
+
+Then follow the info what [vim-plug homepage](https://github.com/junegunn/vim-plug)
+says to install `vim-plug` and run in `neovim`:
+
+```vim
+:PlugInstall
+```
+
+Then you need to go to [coc.nvim homepage](https://github.com/neoclide/coc.nvim)
+for more infomations.
+
+```vim
+CocInstall coc-git coc-java
 ```
 
