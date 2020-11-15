@@ -1,18 +1,29 @@
-# Peterlits' conf
-<!-- H1 =================================================================== -->
+Peterlits' conf
+===============================================================================
 
-The all conf file about my linux.
+The all conf file about my linux (wsl2, and Ubuntu).
 
-## About Zsh
-<!-- H2 =================================================================== -->
+About Zsh
+-------------------------------------------------------------------------------
 
 ### Oh-my-zsh
+
+#### Using system proxy
 
 Before use `zsh` as a script, you should install `proxychains4`(to use Windows'
 proxy) and install `oh-my-zsh` by：
 
 ```shell
 px wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh \
+    -O - | sh
+```
+
+#### Do not need proxy
+
+If you do not need proxy, just run:
+
+```shell
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh \
     -O - | sh
 ```
 
@@ -26,7 +37,21 @@ so follow the [link](https://github.com/zsh-users/zsh-autosuggestions/blob/maste
 The `Zsh` set the `DISPLAY` port for `GUI` applications, so you can go to get a
 open-source `VcXsrc` and run it with port `8500`.
 
-### Windows VPN Server
+### Paste the `.zshrrc` to root
+
+Then paste the .zshrc at the home root `~`:
+
+``` shell
+cp ./conf/.zshrc ~
+```
+
+### Set as a default shell
+
+You can firstly run `cat /etc/shells` and then run command `chsh`.
+
+
+Windows VPN Server
+-------------------------------------------------------------------------------
 
 To access the web whatever you want, you should:
 
@@ -37,8 +62,8 @@ To access the web whatever you want, you should:
 4. Use `px`.
 5. If you still do not get the meaning what I say, push a `issue`.
 
-## About Git Message
-<!-- H2 =================================================================== -->
+About Git Message
+------------------------------------------------------------------------------
 
 Write a great git commit msg is always a good idea for you.
 
@@ -51,16 +76,16 @@ git config --global commit.template ~/.gitmessage.txt
 You can also put it to `<your proj>/conf/gitmessage.txt` and run:
 
 ```shell
-git config commit.template ~/conf/gitmessage.txt
+git config commit.template ./conf/gitmessage.txt
 ```
 
-## About NeoVim
-<!-- H2 =================================================================== -->
+About NeoVim
+-------------------------------------------------------------------------------
 
 After install `neovim` and then you need to run:
 
 ```shell
-cp .vimrc ~/.config/nvim/init.vim
+cp conf/.vimrc ~/.config/nvim/init.vim
 ```
 
 Use `curl -sL install-node.now.sh/lts | bash` to install node for `coc.nvim`.
