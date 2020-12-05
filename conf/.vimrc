@@ -8,9 +8,25 @@
 " endif
 
 call plug#begin()
+    " Coc
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " For TeX/LaTeX
+    Plug 'lervag/vimtex'
 
+    " Airline
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
+    " Tabbar
+    Plug 'webdevel/tabulous'
+
+    " ColorScheme
+    Plug 'crusoexia/vim-monokai'
+
+    " filetree
+    Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -19,6 +35,49 @@ call plug#end()
 " Forker:
 "       Peterlits Zo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LaTeX
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir': '',
+    \ 'callback': 1,
+    \ 'continuous': 1,
+    \ 'executable': 'latexmk',
+    \ 'hooks': [],
+    \ 'options': [
+    \   '-lualatex',
+    \ ],
+    \}
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NerdTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:NERDTreeWinSize = 20 "设定 NERDTree 视窗大小
+let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
+
+"打开vim时如果没有文件自动打开NERDTree
+" autocmd vimenter * if !argc()|NERDTree|endif
+"当NERDTree为剩下的唯一窗口时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" 设置树的显示图标
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+
+let g:NERDTreeShowLineNumbers=0 " 是否显示行号
+
+""Making it prettier
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+function Tree ()
+    NERDTreeToggle
+endfunction
+
+command Tree call Tree()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,6 +164,12 @@ set number
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE guibg=NONE guifg=NONE
 
+" Airline
+let g:airline_theme='luna'
+
+" linenumber
+set relativenumber
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc.nvim and Linter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -146,6 +211,9 @@ endif
 " To enable highlight current symbol on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -157,7 +225,7 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-colorscheme desert
+colorscheme monokai
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -200,10 +268,6 @@ set wrap "Wrap lines
 
 " use backspace to detele everything
 set backspace=2
-
-" use space to insteall tab
-set expandtab
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
