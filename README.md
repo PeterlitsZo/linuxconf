@@ -1,10 +1,8 @@
-Peterlits' conf
-===============================================================================
+# Peterlits' conf
 
 The all conf file about my linux (wsl2, and Ubuntu).
 
-About Zsh
--------------------------------------------------------------------------------
+## About Zsh
 
 ### Oh-my-zsh
 
@@ -37,7 +35,7 @@ so follow the [link](https://github.com/zsh-users/zsh-autosuggestions/blob/maste
 The `Zsh` set the `DISPLAY` port for `GUI` applications, so you can go to get a
 open-source `VcXsrc` and run it with port `8500`.
 
-### Paste the `.zshrrc` to root
+### Paste the `.zshrc` to root
 
 Then paste the .zshrc at the home root `~`:
 
@@ -50,8 +48,7 @@ cp ./conf/.zshrc ~
 You can firstly run `cat /etc/shells` and then run command `chsh`.
 
 
-Windows VPN Server
--------------------------------------------------------------------------------
+## Windows VPN Server
 
 To access the web whatever you want, you should:
 
@@ -62,8 +59,7 @@ To access the web whatever you want, you should:
 4. Use `px`.
 5. If you still do not get the meaning what I say, push a `issue`.
 
-About Git Message
-------------------------------------------------------------------------------
+## About Git Message
 
 Write a great git commit msg is always a good idea for you.
 
@@ -79,28 +75,11 @@ You can also put it to `<your proj>/conf/gitmessage.txt` and run:
 git config commit.template ./conf/gitmessage.txt
 ```
 
-About NeoVim
--------------------------------------------------------------------------------
+## About NeoVim
 
-After install `neovim` and then you need to run:
+Run `bash install.sh install neovim`
 
-```shell
-cp conf/.vimrc ~/.config/nvim/init.vim
-```
+## About Tmux
 
-Use `curl -sL install-node.now.sh/lts | bash` to install node for `coc.nvim`.
-
-Then follow the info what [vim-plug homepage](https://github.com/junegunn/vim-plug)
-says to install `vim-plug` and run in `neovim`:
-
-```vim
-:PlugInstall
-```
-
-Then you need to go to [coc.nvim homepage](https://github.com/neoclide/coc.nvim)
-for more infomations.
-
-```vim
-CocInstall coc-git coc-java
-```
+Run `bash install.sh install tmux`
 
