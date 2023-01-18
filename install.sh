@@ -33,6 +33,7 @@ elif [[ "$1" == "install" && "$2" == "neovim" ]]; then
             echo '    3.1. `:PlugInstall`'
             echo '    3.2. `:CocInstall <extensions>`. Get coc extensions here:'
             echo '         https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions'
+            echo '    3.3. `:CocConfig` and edit coc-config.json by `:r conf/coc-settings`'
             echo
         else
             echo "File ~/.config/nvim/init.vim exists. Skip."
